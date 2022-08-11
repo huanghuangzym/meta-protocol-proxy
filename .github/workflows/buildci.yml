@@ -8,7 +8,7 @@ env:
 jobs:
   BuildMetaProtocolBinary:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 240
     strategy:
       fail-fast: true
     name: BuildMetaProtocol
@@ -26,3 +26,5 @@ jobs:
          git config --global --add safe.directory "$GITHUB_WORKSPACE"
          git config --global --add safe.directory $WORKDIR
          docker run -t --name meta-protocol-proxy-build -v $WORKDIR:/meta-protocol-proxy -w/meta-protocol-proxy  aeraki/meta-protocol-proxy-build:2022-0429-0  sh -c "git config --global --add safe.directory /meta-protocol-proxy && make build"
+         ls -lah 
+         #ls -lah $WORKDIR/bazel-bin/envoy
